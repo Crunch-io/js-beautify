@@ -1462,7 +1462,8 @@
                     print_token();
                 } else {
                     // EXPR or DO_BLOCK
-                    print_newline();
+                    // this handles function args...i'd _rather_ have these on newline but not always
+                    //print_newline();
                     print_token();
                     output_space_before_token = true;
                 }
