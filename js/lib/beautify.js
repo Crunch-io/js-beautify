@@ -1436,11 +1436,12 @@
                     flags.var_line_reindented = true;
                 }
 
+                print_newline();
                 print_token();
 
                 if (flags.var_line_tainted) {
                     flags.var_line_tainted = false;
-                    print_newline();
+                    //print_newline();
                 } else {
                     output_space_before_token = true;
                 }
@@ -1448,18 +1449,20 @@
             }
 
             if (last_type === 'TK_END_BLOCK' && flags.mode !== MODE.Expression) {
+                print_newline();
                 print_token();
                 if (flags.mode === MODE.ObjectLiteral && flags.last_text === '}') {
-                    print_newline();
+                    //print_newline();
                 } else {
                     output_space_before_token = true;
                 }
             } else {
                 if (flags.mode === MODE.ObjectLiteral) {
-                    print_token();
                     print_newline();
+                    print_token();
                 } else {
                     // EXPR or DO_BLOCK
+                    print_newline();
                     print_token();
                     output_space_before_token = true;
                 }
